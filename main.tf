@@ -1,7 +1,5 @@
 provider "aws" {
   region = "us-east-1"
-  access_key = "${var.aws_key}"
-  secret_key = "${var.aws_secret}"
 }
 
 data "aws_ami" "ubuntu" {
@@ -20,7 +18,7 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"] # Canonical
 }
 
-resource "aws_instance" "web" {
+resource "aws_instance" "vault" {
   ami           = "${data.aws_ami.ubuntu.id}"
   instance_type = "t2.micro"
   key_name = "${var.ssh_key}"
